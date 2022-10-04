@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8694574619840285247}
   - component: {fileID: 8694574619840285246}
   - component: {fileID: 8694574619840285234}
+  - component: {fileID: -203166858506803313}
+  - component: {fileID: -1586300266948764446}
   m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
@@ -146,3 +148,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-203166858506803313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694574619840285245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c65009b1934a5b429924716e8700a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 10
+  parent: {fileID: 1892687819049841959, guid: cbff472a3fe88ba4cb5df70e1a5837d1, type: 3}
+--- !u!114 &-1586300266948764446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694574619840285245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136f50d88b24f074da5e8a63bc1ef5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

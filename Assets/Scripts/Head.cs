@@ -44,6 +44,7 @@ public class Head : MonoBehaviour
         displacement = direction.normalized * speed * Time.deltaTime;
         //Debug.Log("currentPosition is" + rb.transform.position);
         rb.transform.position += displacement;
+        //rb.velocity = displacement;
     }
 
     public Vector3 getDirection()
