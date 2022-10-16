@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Head : MonoBehaviour
     public float speed = 10;
     Vector3 direction;
     Vector3 displacement;
+    int size = 0;
 
     public Snake parent;
     // Start is called before the first frame update
@@ -37,17 +39,9 @@ public class Head : MonoBehaviour
         {
             direction = new Vector3(0, -1, 0);
         }
-        //Debug.Log("default: " + speedVect);
-        //Debug.Log("normalized: " + speedVect.normalized);
-        // not quite sure why normalizing speedvect causes continual movement when the normalized and un-normalized 
-        // vectors are the same 
-        displacement = direction.normalized * speed * Time.deltaTime;
-        //Debug.Log("currentPosition is" + rb.transform.position);
-        rb.transform.position += displacement;
-        //rb.velocity = displacement;
     }
 
-    public Vector3 getDirection()
+    public Vector3 GetDirection()
     {
         return direction;
     }
@@ -58,8 +52,14 @@ void OnCollisionEnter2D(Collision2D col)
         if(col.gameObject.layer == 6)
         {
             parent.grow();
+            size++; 
             Debug.Log("OnCollisionEnter2D");
             Destroy(col.gameObject);
+        }
+
+        if(size>1 & col.gameObject.layer == 7 || col.gameObject.layer == 8)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

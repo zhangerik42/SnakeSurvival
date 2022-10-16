@@ -40,12 +40,12 @@ public class Move : MonoBehaviour
         //Debug.Log("normalized: " + speedVect.normalized);
         // not quite sure why normalizing speedvect causes continual movement when the normalized and un-normalized 
         // vectors are the same 
-        displacement = direction.normalized * speed * Time.deltaTime;
+        //displacement = direction.normalized * speed * Time.deltaTime;
         //Debug.Log("currentPosition is" + rb.transform.position);
-        rb.transform.position += displacement;
+        //rb.transform.position += displacement;
     }
 
-    Vector3 getDirection()
+    public Vector3 GetDirection()
     {
         return direction;
     }
