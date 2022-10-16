@@ -12,7 +12,7 @@ public class Snake : MonoBehaviour
     Vector3 prevPosition;
     Vector3 temp;
     float timeSinceLastStep = 0.0f;
-    float waitTime = 0.2f;
+    public float waitTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,25 +35,25 @@ public class Snake : MonoBehaviour
     {
         // if time since lastStep > timeStep, call step
         // in step move the head, then update every other element in the list
-
+        // 2nd block gets the first block's exact position
         timeSinceLastStep += Time.deltaTime;
         if (timeSinceLastStep > waitTime)
         {
             timeSinceLastStep -= waitTime;
-            head.transform.position = head.gameObject.transform.position + offset * head.GetComponent<Head>().GetDirection();
+            // move head
+            //head.transform.position = head.gameObject.transform.position + offset * head.GetComponent<Head>().GetDirection();
             LinkedList<GameObject>.Enumerator snakeEnum = snakeData.GetEnumerator();
             // go through each element in linkedList
             while (snakeEnum.MoveNext())
             {
                 if (snakeEnum.Current == snakeData.First.Value)
                 {
-                    //if(head.transform.position.normalized)
                     prevPosition = snakeEnum.Current.transform.position;
+                    head.transform.position = head.gameObject.transform.position + offset * head.GetComponent<Head>().GetDirection();
                 }
                 else
                 {
                     temp = snakeEnum.Current.transform.position;
-                    // add offset in direction opposite the overall direction of the snake
                     snakeEnum.Current.transform.position = prevPosition;
                     prevPosition = temp;
                 }

@@ -8,7 +8,6 @@ public class Head : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 10;
     Vector3 direction;
-    Vector3 displacement;
     int size = 0;
 
     public Snake parent;
@@ -52,12 +51,11 @@ void OnCollisionEnter2D(Collision2D col)
         if(col.gameObject.layer == 6)
         {
             parent.grow();
-            size++; 
-            Debug.Log("OnCollisionEnter2D");
+            ScoreManager.instance.AddPoint();
             Destroy(col.gameObject);
         }
 
-        if(size>1 & col.gameObject.layer == 7 || col.gameObject.layer == 8)
+        if(col.gameObject.layer == 7 || col.gameObject.layer == 8)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
