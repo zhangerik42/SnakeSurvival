@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     bool winScreenLoaded = false;
+    public int scoreToWin;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((ScoreManager.instance.GetScore() == 10) && winScreenLoaded == false)
+        if((ScoreManager.instance.GetScore() == scoreToWin) && winScreenLoaded == false)
         {
             SceneManager.LoadScene("WinScreen");
             winScreenLoaded = true;

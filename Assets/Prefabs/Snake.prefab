@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2931400652912911319}
-  speed: 10
   parent: {fileID: 1892687819049841959}
 --- !u!1 &6195708376138539144
 GameObject:
@@ -62,6 +61,7 @@ MonoBehaviour:
   snake: {fileID: 6195708376138539144}
   head: {fileID: 2931400652912911317}
   bodySeg: {fileID: 8694574619840285245, guid: 610fe04a8c0047d4fa101210ecdec674, type: 3}
+  waitTime: 1.4
 --- !u!1001 &5766640321854040552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +73,18 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1892687819049841959}
+    - target: {fileID: 8694574619840285232, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694574619840285232, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694574619840285232, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8694574619840285233, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -123,6 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8694574619840285246, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
+    - {fileID: -203166858506803313, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3b7514f3620b60e46bef2c0b458cff0b, type: 3}
 --- !u!1 &2931400652912911317 stripped
 GameObject:

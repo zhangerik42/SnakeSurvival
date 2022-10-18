@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float speed = 10;
     Vector3 direction;
     int size = 0;
 
