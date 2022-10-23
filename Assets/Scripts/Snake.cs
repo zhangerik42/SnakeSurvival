@@ -16,6 +16,7 @@ public class Snake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("black-knight");
         snakeData = new LinkedList<GameObject>();
         snakeData.AddFirst(head);
         offset = 1.0f;

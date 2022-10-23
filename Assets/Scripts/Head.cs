@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour
 {
+    public AudioManager audioManager;
     Vector3 direction;
     int size = 0;
 
@@ -23,16 +24,16 @@ public class Head : MonoBehaviour
             direction = new Vector3(1, 0, 0);
         }
 
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             direction = new Vector3(-1, 0, 0);
         }
 
-        else if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             direction = new Vector3(0, 1, 0);
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             direction = new Vector3(0, -1, 0);
         }
@@ -51,10 +52,12 @@ void OnCollisionEnter2D(Collision2D col)
             parent.grow();
             ScoreManager.instance.AddPoint();
             Destroy(col.gameObject);
+            audioManager.Play("Eat");
         }
 
         if(col.gameObject.layer == 7 || col.gameObject.layer == 8)
         {
+            audioManager.Play("Die");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
