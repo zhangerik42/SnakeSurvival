@@ -47,6 +47,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
             s.source.Play();
-            Debug.Log("Play called");
+            //Debug.Log("Play called");
     }
 }

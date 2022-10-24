@@ -19,7 +19,7 @@ public class Snake : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("black-knight");
         snakeData = new LinkedList<GameObject>();
         snakeData.AddFirst(head);
-        offset = 1.0f;
+        offset = 1f;
         prevPosition = new Vector3(0.0f, 1.0f, 0.0f);
         temp = new Vector3(0.0f, 1.0f, 0.0f);
     }

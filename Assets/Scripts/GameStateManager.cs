@@ -5,19 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    bool winScreenLoaded = false;
-    public int scoreToWin;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameStateManager instance;
 
+    public int scoreToWin;
+    bool winScreenLoaded = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if((ScoreManager.instance.GetScore() == scoreToWin) && winScreenLoaded == false)
+        if ((ScoreManager.instance.GetScore() == scoreToWin) && winScreenLoaded == false)
         {
+            // AudioManager.instance.Play("Win");
             SceneManager.LoadScene("WinScreen");
             winScreenLoaded = true;
             ScoreManager.instance.resetScore();
@@ -27,7 +35,6 @@ public class GameStateManager : MonoBehaviour
         {
             SceneManager.LoadScene("Prototype");
             winScreenLoaded = false;
-            Debug.Log("reload game");
         }
     }
 }

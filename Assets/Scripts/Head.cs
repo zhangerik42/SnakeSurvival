@@ -52,7 +52,7 @@ void OnCollisionEnter2D(Collision2D col)
             parent.grow();
             ScoreManager.instance.AddPoint();
             Destroy(col.gameObject);
-            audioManager.Play("Eat");
+            AudioManager.instance.Play("Eat");
         }
 
         if(col.gameObject.layer == 7 || col.gameObject.layer == 8)
