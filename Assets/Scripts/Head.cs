@@ -13,7 +13,7 @@ public class Head : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        direction = new Vector3(0, -1, 0);
+        direction = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -21,20 +21,24 @@ public class Head : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
+            //Debug.Log("right");
             direction = new Vector3(1, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
+            //Debug.Log("left");
             direction = new Vector3(-1, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
+            //Debug.Log("up");
             direction = new Vector3(0, 1, 0);
         }
         if (Input.GetKey(KeyCode.S))
         {
+            //Debug.Log("down");
             direction = new Vector3(0, -1, 0);
         }
     }

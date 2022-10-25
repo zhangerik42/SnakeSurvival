@@ -12,11 +12,10 @@ public class Snake : MonoBehaviour
     Vector3 prevPosition;
     Vector3 temp;
     float timeSinceLastStep = 0.0f;
-    public float waitTime;
+    public static float waitTime;
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("black-knight");
         snakeData = new LinkedList<GameObject>();
         snakeData.AddFirst(head);
         offset = 1f;

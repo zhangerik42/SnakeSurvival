@@ -14,4 +14,22 @@ public class Prompt : MonoBehaviour
             SceneManager.LoadScene("Prototype");
         }
     }
+
+    public void loadEasy()
+    {
+        Snake.waitTime = 0.2f;
+        SceneManager.LoadScene("Prototype");
+    }
+
+    public void loadMedium()
+    {
+        Snake.waitTime = 0.15f;
+        SceneManager.LoadScene("Prototype");
+    }
+
+    public void loadHard()
+    {
+        Snake.waitTime = 0.12f;
+        SceneManager.LoadScene("Prototype");
+    }
 }
