@@ -49,4 +49,15 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
             //Debug.Log("Play called");
     }
+
+    public AudioSource GetAudioSource(string name)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found.");
+            return null;
+        }
+        return s.source;
+    }
 }

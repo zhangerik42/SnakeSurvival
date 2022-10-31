@@ -8,6 +8,7 @@ public class Snake : MonoBehaviour
     public GameObject head;
     public GameObject bodySeg;
     LinkedList<GameObject> snakeData;
+
     float offset;
     Vector3 prevPosition;
     Vector3 temp;

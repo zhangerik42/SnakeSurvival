@@ -24,12 +24,12 @@ public class Prompt : MonoBehaviour
     public void loadMedium()
     {
         Snake.waitTime = 0.15f;
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("MediumLevel");
     }
 
     public void loadHard()
     {
         Snake.waitTime = 0.12f;
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("MediumLevel");
     }
 }
