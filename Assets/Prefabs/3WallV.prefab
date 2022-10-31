@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6650438346415451653}
   m_Layer: 8
-  m_Name: 3Wall
+  m_Name: 3WallV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481779829328576772}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 2821331802371575321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1001 &2925978961374241386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8694574619840285233, guid: 610fe04a8c0047d4fa101210ecdec674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.506
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8694574619840285233, guid: 610fe04a8c0047d4fa101210ecdec674, type: 3}
       propertyPath: m_LocalPosition.y
@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8694574619840285233, guid: 610fe04a8c0047d4fa101210ecdec674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.506
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8694574619840285233, guid: 610fe04a8c0047d4fa101210ecdec674, type: 3}
       propertyPath: m_LocalPosition.y

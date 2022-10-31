@@ -6,19 +6,16 @@ using UnityEngine.SceneManagement;
 public class Prompt : MonoBehaviour
 {
 
-    // Update is called once per frame
-    void Update()
+    public void loadTutorial()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Prototype");
-        }
+        Snake.waitTime = 0.2f;
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void loadEasy()
     {
         Snake.waitTime = 0.2f;
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("EasyLevel");
     }
 
     public void loadMedium()

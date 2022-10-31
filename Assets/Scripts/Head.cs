@@ -13,7 +13,7 @@ public class Head : MonoBehaviour
     public Snake parent;
     public Image timeBar;
     public GameObject blackEye;
-    public GameObject greenEye;
+    public GameObject blueEye;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +49,7 @@ public class Head : MonoBehaviour
         }
 
         
-        // slowing time mechanic code below
+        // slowing time mechanic
         if (Input.GetKeyDown(KeyCode.Space) && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
         {
             if (!slowTimeEnabled)
@@ -57,27 +57,26 @@ public class Head : MonoBehaviour
                 Time.timeScale = 0.5f;
                 slowTimeEnabled = true;
                 AudioManager.instance.GetAudioSource("MediumBGMusic").pitch = 0.7f;
-                greenEye.SetActive(true);
+                blueEye.SetActive(true);
             }
             else
             {
                 Time.timeScale = 1.0f;
                 slowTimeEnabled = false;
                 AudioManager.instance.GetAudioSource("MediumBGMusic").pitch = 1.0f;
-                greenEye.SetActive(false);
+                blueEye.SetActive(false);
             }
         }
 
-        if (Time.timeScale != 1.0f)
+        if (slowTimeEnabled && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
         {
             timeBar.GetComponent<TimeBar>().DecrementTime();
-            Debug.Log("DECREMENTING TIME");
         }
         else
         {
             slowTimeEnabled = false;
             timeBar.GetComponent<TimeBar>().IncrementTime();
-            greenEye.SetActive(false);
+            blueEye.SetActive(false);
         }
 
         if (timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
@@ -109,6 +108,8 @@ void OnCollisionEnter2D(Collision2D col)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+
     }
 
 }
