@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject head;
 
     private void Start()
     {
@@ -33,9 +34,15 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("resume called");
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        if (head.GetComponent<Head>().isSnakeTime())
+        {
+            Time.timeScale = 0.5f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
         GameIsPaused = false;
     }
 

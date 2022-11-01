@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4d21aa8c0c75c34488fc61d56cf2855d
   - enabled: 1
-    path: Assets/Scenes/Prompt.unity
+    path: Assets/Scenes/LevelSelect.unity
     guid: 1f63e52136329054b988252ffd4814f2
   - enabled: 1
     path: Assets/Scenes/EasyLevel.unity
@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/WinScreen.unity
     guid: 624f911b74929924aabba54b1c3640c4
   - enabled: 1
-    path: Assets/Scenes/MediumLevel.unity
+    path: Assets/Scenes/HardLevel.unity
     guid: 50a620d71de4c5045b17778fa9ce377a
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 1c55c14137b41e54ea7bfb1d24c66e4d
+  - enabled: 1
+    path: Assets/Scenes/MediumLevel.unity
+    guid: 0cd72e8aa80a15a4e9d810b93f392ae5
   m_configObjects: {}

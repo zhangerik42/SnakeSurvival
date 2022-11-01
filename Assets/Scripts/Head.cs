@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour
 {
-    public AudioManager audioManager;
     Vector3 direction;
     bool slowTimeEnabled;
+    private AudioSource currBGMusicSource;
 
     public Snake parent;
-    public Image timeBar;
+    public GameObject timeBar;
     public GameObject blackEye;
     public GameObject blueEye;
     // Start is called before the first frame update
@@ -19,7 +19,24 @@ public class Head : MonoBehaviour
     {
         direction = new Vector3(0, 0, 0);
         slowTimeEnabled = false;
-        AudioManager.instance.Play("MediumBGMusic");
+        // there's prolly better way to do this, come back
+        if(SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            currBGMusicSource = AudioManager.instance.GetAudioSource("TutorialBGMusic");
+        }
+        else if (SceneManager.GetActiveScene().name == "EasyLevel")
+        {
+            currBGMusicSource = AudioManager.instance.GetAudioSource("EasyBGMusic");
+        }
+        else if(SceneManager.GetActiveScene().name == "MediumLevel")
+        {
+            currBGMusicSource = AudioManager.instance.GetAudioSource("MediumBGMusic");
+        }
+        else if (SceneManager.GetActiveScene().name == "HardLevel")
+        {
+            currBGMusicSource = AudioManager.instance.GetAudioSource("HardBGMusic");
+        }
+        currBGMusicSource.Play();
     }
 
     // Update is called once per frame
@@ -48,46 +65,52 @@ public class Head : MonoBehaviour
             direction = new Vector3(0, -1, 0);
         }
 
-        
+
         // slowing time mechanic
-        if (Input.GetKeyDown(KeyCode.Space) && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
-        {
-            if (!slowTimeEnabled)
+        // don't allow this when game's 
+        if (Time.timeScale != 0) {
+            if (Input.GetKeyDown(KeyCode.Space) && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
             {
-                Time.timeScale = 0.5f;
-                slowTimeEnabled = true;
-                AudioManager.instance.GetAudioSource("MediumBGMusic").pitch = 0.7f;
-                blueEye.SetActive(true);
+                if (!slowTimeEnabled)
+                {
+                    Time.timeScale = 0.5f;
+                    slowTimeEnabled = true;
+                    currBGMusicSource.pitch = 0.7f;
+                    blueEye.SetActive(true);
+                }
+                else
+                {
+                    Time.timeScale = 1.0f;
+                    slowTimeEnabled = false;
+                    currBGMusicSource.pitch = 1.0f;
+                    blueEye.SetActive(false);
+                }
+            }
+
+            if (slowTimeEnabled && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
+            {
+                timeBar.GetComponent<TimeBar>().DecrementTime();
             }
             else
             {
-                Time.timeScale = 1.0f;
                 slowTimeEnabled = false;
-                AudioManager.instance.GetAudioSource("MediumBGMusic").pitch = 1.0f;
+                timeBar.GetComponent<TimeBar>().IncrementTime();
                 blueEye.SetActive(false);
             }
-        }
 
-        if (slowTimeEnabled && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
-        {
-            timeBar.GetComponent<TimeBar>().DecrementTime();
+            if (timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
+            {
+                Time.timeScale = 1.0f;
+                currBGMusicSource.pitch = 1.0f;
+            }
         }
-        else
-        {
-            slowTimeEnabled = false;
-            timeBar.GetComponent<TimeBar>().IncrementTime();
-            blueEye.SetActive(false);
-        }
-
-        if (timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
-        {
-            Time.timeScale = 1.0f;
-            AudioManager.instance.GetAudioSource("MediumBGMusic").pitch = 1.0f;
-        }
-        
  
     }
 
+    public bool isSnakeTime()
+    {
+        return slowTimeEnabled;
+    }
     public Vector3 GetDirection()
     {
         return direction;
@@ -109,6 +132,11 @@ void OnCollisionEnter2D(Collision2D col)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        if (col.gameObject.layer == 9)
+        {
+            Destroy(col.gameObject);
+            timeBar.GetComponent<TimeBar>().GrowTimeBar();
+        }
 
     }
 

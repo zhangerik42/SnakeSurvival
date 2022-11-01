@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    private const int TUTORIAL_SCORE_TO_WIN = 7;
+    private const int TUTORIAL_SCORE_TO_WIN = 1000;
     private const int LEVEL_1_SCORE_TO_WIN = 21;
-    private const int LEVEL_2_SCORE_TO_WIN = 42;
+    private const int LEVEL_2_SCORE_TO_WIN = 61;
     private const int LEVEL_3_SCORE_TO_WIN = 63;
     public static GameStateManager instance;
 
@@ -62,11 +62,6 @@ public class GameStateManager : MonoBehaviour
                 ScoreManager.instance.resetScore();
             }
 
-            if (Input.GetKey(KeyCode.R))
-            {
-                SceneManager.LoadScene("Prototype");
-                winScreenLoaded = false;
-            }
         }
     }
 }

@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2242758107860922755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2242758107860922754}
+  - component: {fileID: 2242758107860922753}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2242758107860922754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242758107860922755}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 0.36363634, y: 0.36363634, z: 0.36363634}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2242758107860922753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242758107860922755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9ae7cf8784ce24590addddbca9169d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Eat
+    clip: {fileID: 8300000, guid: 21c0436c692d20d47a1605a58be8abe9, type: 3}
+    volume: 0.136
+    pitch: 2.3
+    loop: 0
+    source: {fileID: 0}
+  - name: WIn
+    clip: {fileID: 8300000, guid: 37f182c7212d9e54b89998e940e947b3, type: 3}
+    volume: 0.494
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MediumBGMusic
+    clip: {fileID: 8300000, guid: c6a56e6be7df48045b9c2ab1c42ab04a, type: 3}
+    volume: 0.751
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EasyBGMusic
+    clip: {fileID: 8300000, guid: a708d551599243941aec8c4d13d86310, type: 3}
+    volume: 0.751
+    pitch: 0.9
+    loop: 0
+    source: {fileID: 0}
+  - name: TutorialBGMusic
+    clip: {fileID: 8300000, guid: cbb20f731a2a14049900fd14c023294f, type: 3}
+    volume: 0.751
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EatTimeBall
+    clip: {fileID: 8300000, guid: 21c0436c692d20d47a1605a58be8abe9, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: HardBGMusic
+    clip: {fileID: 8300000, guid: 23465696654c3e747a51f1d42511a66b, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 1
+    source: {fileID: 0}
+  - name: EasyBGMusic
+    clip: {fileID: 8300000, guid: a708d551599243941aec8c4d13d86310, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 1
+    source: {fileID: 0}

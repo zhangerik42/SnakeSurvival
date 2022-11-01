@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TimeBar : MonoBehaviour
 {
-    private const float MAX_TIME = 50f;
-    private const float TIME_RATE = 0.25f;
+    private float MAX_TIME = 50f;
+    // -30 time per second
+    private const float TIME_RATE = 0.5f;
     public float time;
     private Image timeBar;
 
@@ -37,11 +38,17 @@ public class TimeBar : MonoBehaviour
     public void IncrementTime()
     {
         if (time < MAX_TIME)
-            time += TIME_RATE/2;
+            time += TIME_RATE;
     }
 
     public bool IsTimeBarDepleted()
     {
         return time <= 0.0f;
+    }
+
+    public void GrowTimeBar()
+    {
+        MAX_TIME += 5;
+        timeBar.rectTransform.rect.Set(timeBar.rectTransform.rect.x, timeBar.rectTransform.rect.y, timeBar.rectTransform.rect.width + 10, timeBar.rectTransform.rect.height);
     }
 }
