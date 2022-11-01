@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MediumLevel.unity
     guid: 0cd72e8aa80a15a4e9d810b93f392ae5
+  - enabled: 1
+    path: Assets/Scenes/WinMedusa.unity
+    guid: 953c60e7e1cf7a9498e9b7bcf441e23d
+  - enabled: 1
+    path: Assets/Scenes/WinSmurf.unity
+    guid: 7f57f494120dfd14f8678661d9bd636c
   m_configObjects: {}

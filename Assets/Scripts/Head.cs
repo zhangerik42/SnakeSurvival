@@ -14,9 +14,24 @@ public class Head : MonoBehaviour
     public GameObject timeBar;
     public GameObject blackEye;
     public GameObject blueEye;
+    public GameObject prompt;
     // Start is called before the first frame update
     void Start()
     {
+        // at every new attempt of the game, record it as a "try"
+        if (SceneManager.GetActiveScene().name == "EasyLevel")
+        {
+            int smurfTries = PlayerPrefs.GetInt("SmurfTries");
+            PlayerPrefs.SetInt("SmurfTries", smurfTries + 1);
+        }
+        if (SceneManager.GetActiveScene().name == "MediumLevel")
+        {
+            int medusaTries = PlayerPrefs.GetInt("MedusaTries");
+            PlayerPrefs.SetInt("MedusaTries", medusaTries + 1);
+        }
+        PlayerPrefs.Save();
+
+        prompt.SetActive(true);
         direction = new Vector3(0, 0, 0);
         slowTimeEnabled = false;
         // there's prolly better way to do this, come back
@@ -46,23 +61,27 @@ public class Head : MonoBehaviour
         {
             //Debug.Log("right");
             direction = new Vector3(1, 0, 0);
+            prompt.SetActive(false);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             //Debug.Log("left");
             direction = new Vector3(-1, 0, 0);
+            prompt.SetActive(false);
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             //Debug.Log("up");
             direction = new Vector3(0, 1, 0);
+            prompt.SetActive(false);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             //Debug.Log("down");
             direction = new Vector3(0, -1, 0);
+            prompt.SetActive(false);
         }
 
 
@@ -130,6 +149,7 @@ void OnCollisionEnter2D(Collision2D col)
         if((col.gameObject.layer == 7 || col.gameObject.layer == 8) && !slowTimeEnabled)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
 
         if (col.gameObject.layer == 9)

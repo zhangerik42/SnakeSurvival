@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     private const int TUTORIAL_SCORE_TO_WIN = 1000;
-    private const int LEVEL_1_SCORE_TO_WIN = 21;
-    private const int LEVEL_2_SCORE_TO_WIN = 61;
+    private const int LEVEL_1_SCORE_TO_WIN = 35;
+    private const int LEVEL_2_SCORE_TO_WIN = 60;
     private const int LEVEL_3_SCORE_TO_WIN = 63;
     public static GameStateManager instance;
 
@@ -57,9 +57,16 @@ public class GameStateManager : MonoBehaviour
             if ((ScoreManager.instance.GetScore() == scoreToWin) && winScreenLoaded == false)
             {
                 AudioManager.instance.Play("Win");
-                SceneManager.LoadScene("WinScreen");
                 winScreenLoaded = true;
                 ScoreManager.instance.resetScore();
+                if (currScene.name == "EasyLevel")
+                {
+                    SceneManager.LoadScene("WinSmurf");
+                }
+                if (currScene.name == "MediumLevel")
+                {
+                    SceneManager.LoadScene("WinMedusa");
+                }
             }
 
         }

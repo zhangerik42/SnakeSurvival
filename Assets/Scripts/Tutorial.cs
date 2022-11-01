@@ -27,7 +27,7 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (checkpt5 == null)
+        if (checkpt5 == null && ScoreManager.instance.GetScore() == 10)
         {
             setAllInactive();
             instr6.SetActive(true);
