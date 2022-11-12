@@ -1664,6 +1664,7 @@ GameObject:
   - component: {fileID: 270310244}
   - component: {fileID: 270310243}
   - component: {fileID: 270310241}
+  - component: {fileID: 270310242}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1681,6 +1682,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df755b16084d2914ba8c8d2af1191a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &270310242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270310240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec76c64323f8334b959b69872af55af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &270310243
@@ -3493,13 +3506,84 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2242758107860922755, guid: 07d4bb48f4758fe419a60783de0e975f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2242758107860922753, guid: 07d4bb48f4758fe419a60783de0e975f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07d4bb48f4758fe419a60783de0e975f, type: 3}
 --- !u!4 &467918425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2242758107860922754, guid: 07d4bb48f4758fe419a60783de0e975f, type: 3}
   m_PrefabInstance: {fileID: 467918424}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &467918426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2242758107860922755, guid: 07d4bb48f4758fe419a60783de0e975f, type: 3}
+  m_PrefabInstance: {fileID: 467918424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &467918427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467918426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9ae7cf8784ce24590addddbca9169d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Eat
+    clip: {fileID: 8300000, guid: 21c0436c692d20d47a1605a58be8abe9, type: 3}
+    volume: 0.136
+    pitch: 2.3
+    loop: 0
+    source: {fileID: 0}
+  - name: WIn
+    clip: {fileID: 8300000, guid: 37f182c7212d9e54b89998e940e947b3, type: 3}
+    volume: 0.494
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MediumBGMusic
+    clip: {fileID: 8300000, guid: c6a56e6be7df48045b9c2ab1c42ab04a, type: 3}
+    volume: 0.751
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EasyBGMusic
+    clip: {fileID: 8300000, guid: a708d551599243941aec8c4d13d86310, type: 3}
+    volume: 0.751
+    pitch: 0.9
+    loop: 0
+    source: {fileID: 0}
+  - name: TutorialBGMusic
+    clip: {fileID: 8300000, guid: cbb20f731a2a14049900fd14c023294f, type: 3}
+    volume: 0.751
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EatTimeBall
+    clip: {fileID: 8300000, guid: 21c0436c692d20d47a1605a58be8abe9, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: HardBGMusic
+    clip: {fileID: 8300000, guid: 23465696654c3e747a51f1d42511a66b, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 1
+    source: {fileID: 0}
+  - name: EasyBGMusic
+    clip: {fileID: 8300000, guid: a708d551599243941aec8c4d13d86310, type: 3}
+    volume: 0.751
+    pitch: 0.7
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &476198859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12720,7 +12804,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 76
+  field of view: 65
   orthographic: 0
   orthographic size: 6.509261
   m_Depth: -1

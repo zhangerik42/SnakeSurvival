@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour
 {
-    Vector3 direction;
-    bool slowTimeEnabled;
+    Vector3 direction = new Vector3(0, 0, 0);
+    bool slowTimeEnabled = false;
     private AudioSource currBGMusicSource;
 
     public Snake parent;
@@ -18,24 +18,8 @@ public class Head : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // at every new attempt of the game, record it as a "try"
-        if (SceneManager.GetActiveScene().name == "EasyLevel")
-        {
-            int smurfTries = PlayerPrefs.GetInt("SmurfTries");
-            PlayerPrefs.SetInt("SmurfTries", smurfTries + 1);
-        }
-        if (SceneManager.GetActiveScene().name == "MediumLevel")
-        {
-            int medusaTries = PlayerPrefs.GetInt("MedusaTries");
-            PlayerPrefs.SetInt("MedusaTries", medusaTries + 1);
-        }
-        PlayerPrefs.Save();
-
         prompt.SetActive(true);
-        direction = new Vector3(0, 0, 0);
-        slowTimeEnabled = false;
-        // there's prolly better way to do this, come back
-        if(SceneManager.GetActiveScene().name == "Tutorial")
+        if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             currBGMusicSource = AudioManager.instance.GetAudioSource("TutorialBGMusic");
         }
@@ -43,7 +27,7 @@ public class Head : MonoBehaviour
         {
             currBGMusicSource = AudioManager.instance.GetAudioSource("EasyBGMusic");
         }
-        else if(SceneManager.GetActiveScene().name == "MediumLevel")
+        else if (SceneManager.GetActiveScene().name == "MediumLevel")
         {
             currBGMusicSource = AudioManager.instance.GetAudioSource("MediumBGMusic");
         }
@@ -84,46 +68,45 @@ public class Head : MonoBehaviour
             prompt.SetActive(false);
         }
 
-
-        // slowing time mechanic
-        // don't allow this when game's 
-        if (Time.timeScale != 0) {
-            if (Input.GetKeyDown(KeyCode.Space) && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
+        // don't allow snake time when game's paused
+        if (Time.timeScale != 0)
+        {
+            // if space is pressed either start slow time or disenable slow time
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (!slowTimeEnabled)
                 {
                     Time.timeScale = 0.5f;
-                    slowTimeEnabled = true;
                     currBGMusicSource.pitch = 0.7f;
+                    slowTimeEnabled = true;
                     blueEye.SetActive(true);
                 }
                 else
                 {
                     Time.timeScale = 1.0f;
-                    slowTimeEnabled = false;
                     currBGMusicSource.pitch = 1.0f;
+                    slowTimeEnabled = false;
                     blueEye.SetActive(false);
                 }
             }
-
+            // decrement time bar during snake time
             if (slowTimeEnabled && !timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
             {
                 timeBar.GetComponent<TimeBar>().DecrementTime();
             }
+            // handles case where time bar hits 0
             else
             {
-                slowTimeEnabled = false;
+                if (slowTimeEnabled)
+                {
+                    Time.timeScale = 1.0f;
+                    currBGMusicSource.pitch = 1.0f;
+                    blueEye.SetActive(false);
+                    slowTimeEnabled = false;
+                }
                 timeBar.GetComponent<TimeBar>().IncrementTime();
-                blueEye.SetActive(false);
-            }
-
-            if (timeBar.GetComponent<TimeBar>().IsTimeBarDepleted())
-            {
-                Time.timeScale = 1.0f;
-                currBGMusicSource.pitch = 1.0f;
             }
         }
- 
     }
 
     public bool isSnakeTime()
@@ -135,10 +118,10 @@ public class Head : MonoBehaviour
         return direction;
     }
 
-void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        // if colliding with food, increase size of snake by one segment & destroy food. 
-        if(col.gameObject.layer == 6)
+        // food 
+        if (col.gameObject.layer == 6)
         {
             parent.grow();
             ScoreManager.instance.AddPoint();
@@ -146,12 +129,14 @@ void OnCollisionEnter2D(Collision2D col)
             AudioManager.instance.Play("Eat");
         }
 
-        if((col.gameObject.layer == 7 || col.gameObject.layer == 8) && !slowTimeEnabled)
+        // wall / snake
+        if ((col.gameObject.layer == 7 || col.gameObject.layer == 8) && !slowTimeEnabled)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
 
+        // time ball
         if (col.gameObject.layer == 9)
         {
             Destroy(col.gameObject);
